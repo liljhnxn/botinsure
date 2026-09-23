@@ -1,0 +1,41 @@
+{
+  "network": "botchainTestnet",
+  "chainId": 968,
+  "deployer": "0x83acc57bb9CDe889b248E9c740F5248637cd89f4",
+  "timestamp": "2026-09-23T19:56:37.101Z",
+  "contracts": {
+    "BotInsure": "0xdc04788364d51f8A836794694a728322634bD4Ac",
+    "BotToken": "0xa745cA6705B718156207a29cb102d7EA1Cd27720",
+    "BotOracle": "0x79bEA635f37aCeE4AfFa8056474180921F156cea",
+    "BotLend": "0x11148C246EBcfCE2E189d24044178072F3C8f2b6",
+    "PoolTokenFactory": "0xd25cdba972b32A283a141175F322A3D5B948960A",
+    "Pool1ShareToken": "0x5E925a259E883Dd9B456e7502857Fa8A4fa40460",
+    "Pool2ShareToken": "0x8Df1e62C5583F192A9b0Dd107dB8b64127e71995"
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "BOT Price Drop Protection",
+      "poolId": 1,
+      "trigger": "BOT <= $0.70"
+    },
+    {
+      "id": 2,
+      "name": "BotLend Liquidation Protection",
+      "poolId": 2,
+      "trigger": "Health Factor < 1.0"
+    }
+  ],
+  "pools": [
+    {
+      "id": 1,
+      "name": "BOT Price Protection Pool",
+      "shareToken": "0x5E925a259E883Dd9B456e7502857Fa8A4fa40460"
+    },
+    {
+      "id": 2,
+      "name": "BotLend Liquidation Protection Pool",
+      "shareToken": "0x8Df1e62C5583F192A9b0Dd107dB8b64127e71995"
+    }
+  ]
+}

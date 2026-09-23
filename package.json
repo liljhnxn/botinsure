@@ -1,0 +1,40 @@
+{
+  "name": "botinsure",
+  "version": "1.0.0",
+  "description": "BotInsure - Decentralized Parametric Protection Protocol for the Botchain Ecosystem",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network botchainTestnet",
+    "keeper": "hardhat run scripts/keeperBot.ts --network botchainTestnet",
+    "keeper:watch": "hardhat run scripts/keeperBot.ts --network botchainTestnet -- --watch",
+    "simulate:drop": "hardhat run scripts/simulateDrop.ts --network botchainTestnet",
+    "frontend": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "lint": "npm --prefix frontend run lint"
+  },
+  "keywords": [
+    "solidity",
+    "defi",
+    "parametric-insurance",
+    "botchain",
+    "web3",
+    "nextjs"
+  ],
+  "author": "BotInsure Protocol",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.14.0",
+    "chai": "^4.3.10",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0",
+    "hardhat": "^2.22.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
