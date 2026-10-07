@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BotInsure Protocol — Whitepaper & Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --card-alt: #1a2234;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --primary: #00f0ff;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --border: #1f2937;
+      --border-accent: rgba(0, 240, 255, 0.25);
+    }
+    @media print {
+      body { background: #ffffff !important; color: #111827 !important; padding: 0 !important; }
+      .no-print { display: none !important; }
+      .container { max-width: 100% !important; margin: 0 !important; padding: 24px !important; box-shadow: none !important; border: none !important; background: #ffffff !important; }
+      pre, code { background: #f1f5f9 !important; color: #0f172a !important; border: 1px solid #cbd5e1 !important; }
+      a { color: #0284c7 !important; text-decoration: underline !important; }
+      .tag { border: 1px solid #cbd5e1 !important; color: #334155 !important; background: transparent !important; }
+      .slide-card, .metric-card { background: #f8fafc !important; border: 1px solid #e2e8f0 !important; color: #0f172a !important; }
+      h1, h2, h3 { color: #0f172a !important; }
+      table { border-collapse: collapse; }
+      th, td { border: 1px solid #cbd5e1 !important; color: #0f172a !important; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      line-height: 1.65;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 52px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(0, 240, 255, 0.12);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--border-accent);
+    }
+    .tag-emerald {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    h2 {
+      font-size: 1.55rem;
+      margin: 40px 0 18px 0;
+      color: #ffffff;
+      border-left: 4px solid var(--primary);
+      padding-left: 14px;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-size: 1.25rem;
+      margin: 28px 0 12px 0;
+      color: #38bdf8;
+    }
+    p {
+      margin: 0 0 18px 0;
+      color: #cbd5e1;
+    }
+    ul, ol {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+    li {
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+    strong {
+      color: #ffffff;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+    .metric-card {
+      background: var(--card-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .metric-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .metric-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .metric-value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .metric-desc {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-alt);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    th {
+      background: #1e293b;
+      color: #f1f5f9;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      border-bottom: 1px solid var(--border);
+      color: #cbd5e1;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88em;
+      background: #1e293b;
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+    pre {
+      background: #0d121f;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin: 20px 0;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    .callout {
+      background: rgba(0, 240, 255, 0.06);
+      border-left: 4px solid var(--primary);
+      padding: 18px 22px;
+      border-radius: 0 10px 10px 0;
+      margin: 24px 0;
+    }
+    .callout-emerald {
+      background: rgba(16, 185, 129, 0.06);
+      border-left-color: var(--accent);
+    }
+    .callout-warning {
+      background: rgba(245, 158, 11, 0.08);
+      border-left-color: var(--warning);
+    }
+    .floating-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: linear-gradient(135deg, #00f0ff, #0284c7);
+      color: #000000;
+      font-weight: 700;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.4);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      z-index: 1000;
+    }
+    .floating-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 240, 255, 0.55);
+    }
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .slide-card {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .slide-number {
+      font-size: 0.75rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="floating-btn no-print" onclick="window.print()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 6 2 18 2 18 9"></polyline>
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+      <rect x="6" y="14" width="12" height="8"></rect>
+    </svg>
+    Save as PDF / Print
+  </button>
+
+  <div class="container">
+    <div class="header">
+      <div class="tag-group">
+        <span class="tag">Botchain Ecosystem</span>
+        <span class="tag tag-emerald">Parametric DeFi</span>
+        <span class="tag">Chain ID: 968</span>
+        <span class="tag tag-emerald">Live on Testnet</span>
+      </div>
+      <h1>BotInsure Protocol</h1>
+      <p class="subtitle">Decentralized Parametric Protection & Liquidity Protocol on Botchain</p>
+    </div>
+
+    <div class="callout callout-emerald">
+      <strong>Core Thesis:</strong> "Code as the Claims Adjuster." BotInsure replaces subjective claim committees and protracted arbitration with deterministic, mathematical on-chain parametric execution. When an oracle condition is breached, payouts are guaranteed.
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>
+      In traditional Web3 insurance protocols, token holders or centralized committees vote on whether to approve insurance claims. This introduces an inherent, catastrophic agency conflict: capital underwriters vote directly on whether to pay out their own capital, leading to prolonged delays, claim denial scandals, and destroyed user trust.
+    </p>
+    <p>
+      <strong>BotInsure</strong> solves this structural flaw by establishing an entirely <strong>parametric protection framework</strong> on <strong>Botchain Testnet (Chain ID 968)</strong>. Policies possess pre-determined, binary trigger metrics sourced directly from trusted on-chain oracles (<code>IBotOracle</code>) and DeFi protocol states (<code>IBotLend</code>). Payouts execute deterministically without dispute windows, manual paperwork, or discretionary voting.
+    </p>
+
+    <div class="grid-2">
+      <div class="metric-card">
+        <div class="metric-title">Settlement Time</div>
+        <div class="metric-value" style="color: var(--primary);">Instantaneous</div>
+        <div class="metric-desc">Triggered deterministically upon verified oracle updates.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Human Discretion</div>
+        <div class="metric-value" style="color: var(--accent);">0% (Zero)</div>
+        <div class="metric-desc">Pure math and smart contract execution; no voting delays.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">LP Underwriting Fee</div>
+        <div class="metric-value" style="color: #ffffff;">95% to LPs</div>
+        <div class="metric-desc">Premiums compound directly into ERC-20 pool share asset values.</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Claim Settlement Window</div>
+        <div class="metric-value" style="color: var(--warning);">7 Days</div>
+        <div class="metric-desc">Guarantees policyholders ample time while preventing capital lockup.</div>
+      </div>
+    </div>
+
+    <h2>2. Protection Products (MVP)</h2>
+    <div class="grid-2">
+      <div class="metric-card" style="border-left: 4px solid var(--primary);">
+        <div class="metric-title" style="color: var(--primary);">Product 1</div>
+        <div class="metric-value">BOT Price Drop Protection</div>
+        <div class="metric-desc" style="margin-top: 12px; line-height: 1.5;">
+          • <strong>Target:</strong> Protects ecosystem participants against acute downside drops in BOT token valuation.<br>
+          • <strong>Trigger Type:</strong> <code>PRICE_BELOW</code><br>
+          • <strong>Oracle Feed:</strong> <code>IBotOracle</code> Feed #1 (BOT/USD, 8 decimals)<br>
+          • <strong>Condition:</strong> Triggered when <code>latestPrice &le; triggerValue</code> (e.g. &le; $0.70)<br>
+          • <strong>Payout:</strong> 100% of purchased coverage in BOT tokens<br>
+          • <strong>Underwriting Pool:</strong> Pool #1 (BOT Price Protection Pool)
+        </div>
+      </div>
+      <div class="metric-card" style="border-left: 4px solid var(--accent);">
+        <div class="metric-title" style="color: var(--accent);">Product 2</div>
+        <div class="metric-value">BotLend Liquidation Protection</div>
+        <div class="metric-desc" style="margin-top: 12px; line-height: 1.5;">
+          • <strong>Target:</strong> Protects leveraged borrowers on BotLend from liquidation events.<br>
+          • <strong>Trigger Type:</strong> <code>HEALTH_FACTOR_BELOW</code><br>
+          • <strong>Oracle Feed:</strong> <code>IBotLend</code> Position Reader<br>
+          • <strong>Condition:</strong> Triggered when loan Health Factor drops &lt; 1.00<br>
+          • <strong>Payout:</strong> 85% of purchased coverage in BOT tokens<br>
+          • <strong>Underwriting Pool:</strong> Pool #2 (BotLend Liquidation Protection Pool)
+        </div>
+      </div>
+    </div>
+
+    <h2>3. Protocol Architecture & Lifecycle</h2>
+    <p>The lifecycle of a BotInsure policy follows an immutable state-machine pattern:</p>
+    <ol>
+      <li><strong>Capital Underwriting:</strong> Liquidity providers deposit BOT tokens into dedicated risk pools and receive yield-accruing ERC-20 share tokens (<code>BotInsurePoolToken</code>).</li>
+      <li><strong>Policy Acquisition:</strong> Users select coverage parameters and duration. 95% of premium deposits directly into pool assets, while 5% allocates to protocol treasury.</li>
+      <li><strong>Capacity Reservation:</strong> The smart contract locks the exact coverage commitment, preventing LP capital withdrawals that would violate solvency.</li>
+      <li><strong>Condition Monitoring:</strong> On-chain oracles report real-time feeds. Decentralized keepers continuously monitor active policies.</li>
+      <li><strong>Deterministic Payout:</strong> If a trigger condition is verified, the policy becomes <code>CLAIMABLE</code>. The user claims their payout within 7 days with zero committee friction.</li>
+    </ol>
+
+    <h2>4. Financial Engineering & Underwriting Economics</h2>
+    <p>Premiums are computed transparently on-chain using precision fixed-point math:</p>
+    <pre><code>Premium = (CoverageAmount * PremiumRate * Duration) / (10,000 * 365 days)</code></pre>
+    <p>
+      Liquidity Pool shares follow a pro-rata Net Asset Value (NAV) model:
+    </p>
+    <ul>
+      <li><strong>Deposit:</strong> <code>SharesMinted = (DepositAmount * TotalShares) / PoolNetAssets</code></li>
+      <li><strong>Withdrawal:</strong> <code>BOTRedeemed = (SharesBurned * PoolNetAssets) / TotalShares</code></li>
+      <li><strong>Solvency Invariant:</strong> <code>PoolNetAssets - WithdrawalAmount &ge; LockedCoverageObligations</code></li>
+    </ul>
+
+    <h2>5. Smart Contract Security & Architecture</h2>
+    <p>BotInsure is built with production-grade defense-in-depth principles:</p>
+    <ul>
+      <li><strong>Reentrancy Protection:</strong> OpenZeppelin <code>ReentrancyGuard</code> on all deposit, withdraw, purchase, and settlement flows.</li>
+      <li><strong>Safe Token Transfers:</strong> OpenZeppelin <code>SafeERC20</code> handles standard and non-standard ERC-20 behavior.</li>
+      <li><strong>Oracle Staleness Guards:</strong> Smart contracts reject feeds older than <code>maxOracleAge</code> or non-positive values.</li>
+      <li><strong>Single-Use Policy Guards:</strong> Once settled, policies transition permanently to <code>Claimed</code>.</li>
+      <li><strong>Emergency Circuit Breakers:</strong> Role-based <code>Pausable</code> mechanism can pause new purchases during black-swan events while allowing valid claims to settle cleanly.</li>
+      <li><strong>Comprehensive Test Coverage:</strong> 35 automated Hardhat unit tests covering pool share math, product limits, double-claims, and financial invariants.</li>
+    </ul>
+
+    <h2>6. Pitch Deck: Executive Presentation Slides</h2>
+
+    <div class="slide-card">
+      <div class="slide-number">Slide 1 — The Problem</div>
+      <strong>Web3 Coverage is Broken</strong>
+      <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">
+        Discretionary Web3 mutuals rely on DAO voting. Token holders vote with their wallets, routinely rejecting valid claims. Settlement times stretch from weeks to months, defeating the purpose of on-chain hedging.
+      </p>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-number">Slide 2 — The Solution</div>
+      <strong>BotInsure: Zero-Dispute Parametric Protection</strong>
+      <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">
+        Mathematical, code-enforced execution on Botchain. Purely binary triggers: if the oracle feed says the price crashed or health factor dropped, the smart contract pays out immediately.
+      </p>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-number">Slide 3 — Dual Revenue & Yield Flywheel</div>
+      <strong>Compelling Economics for LPs & Protocol</strong>
+      <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">
+        LPs earn 95% of incoming premiums auto-compounded into share values with capital solvency locks. Protocol collects 5% treasury fees to fund continuous keeper incentives and ecosystem growth.
+      </p>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-number">Slide 4 — Botchain Native Synergy</div>
+      <strong>Deep Ecosystem Integration</strong>
+      <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">
+        Tightly coupled with <code>IBotOracle</code> for native price discovery and <code>IBotLend</code> for automated borrower position hedging, unlocking safer leverage across the entire Botchain economy.
+      </p>
+    </div>
+
+    <h2>7. Live Botchain Deployment & Network Parameters</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Testnet Deployment Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Network</strong></td>
+          <td>Botchain Testnet (Bohr)</td>
+        </tr>
+        <tr>
+          <td><strong>Chain ID</strong></td>
+          <td><code>968</code></td>
+        </tr>
+        <tr>
+          <td><strong>RPC Endpoint</strong></td>
+          <td><code>https://rpc.bohr.life</code></td>
+        </tr>
+        <tr>
+          <td><strong>Block Explorer</strong></td>
+          <td><a href="https://scan.bohr.life" target="_blank" rel="noreferrer">https://scan.bohr.life</a></td>
+        </tr>
+        <tr>
+          <td><strong>BotInsure Contract</strong></td>
+          <td><a href="https://scan.bohr.life/address/0xdc04788364d51f8A836794694a728322634bD4Ac" target="_blank" rel="noreferrer"><code>0xdc04788364d51f8A836794694a728322634bD4Ac</code></a></td>
+        </tr>
+        <tr>
+          <td><strong>BOT Token Contract</strong></td>
+          <td><a href="https://scan.bohr.life/address/0xa745cA6705B718156207a29cb102d7EA1Cd27720" target="_blank" rel="noreferrer"><code>0xa745cA6705B718156207a29cb102d7EA1Cd27720</code></a></td>
+        </tr>
+        <tr>
+          <td><strong>BotOracle Feed</strong></td>
+          <td><a href="https://scan.bohr.life/address/0x79bEA635f37aCeE4AfFa8056474180921F156cea" target="_blank" rel="noreferrer"><code>0x79bEA635f37aCeE4AfFa8056474180921F156cea</code></a></td>
+        </tr>
+        <tr>
+          <td><strong>BotLend Integration</strong></td>
+          <td><code>0x11148C246EBcfCE2E189d24044178072F3C8f2b6</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      BotInsure Protocol • Built for Botchain Testnet (Chain ID 968) • Licensed under MIT
+    </div>
+  </div>
+
+</body>
+</html>
