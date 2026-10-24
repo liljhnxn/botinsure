@@ -170,12 +170,14 @@ export default function PolicyDetailPage() {
             The payout has been disbursed to your wallet.
           </p>
           <a
-            href={`https://scan.bohr.life/tx/${settleSuccessHash}`}
+            href={`https://scan.botchain.ai/tx/${settleSuccessHash}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-xs text-botCyan hover:underline font-mono"
+            className="inline-flex items-center gap-1.5 text-xs text-botCyan hover:underline font-mono"
           >
-            <span>View BohrScan Transaction: {settleSuccessHash.slice(0, 18)}...</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
+            <span>View BotScan Transaction: {settleSuccessHash.slice(0, 18)}...</span>
             <ExternalLink className="h-3 w-3" />
           </a>
         </div>
@@ -274,16 +276,18 @@ export default function PolicyDetailPage() {
             </div>
             <div className="pt-2 border-t border-surfaceBorder space-y-2">
               <a
-                href={`https://scan.bohr.life/address/${CONTRACT_ADDRESSES.botInsure}`}
+                href={`https://scan.botchain.ai/address/${CONTRACT_ADDRESSES.botInsure}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1 text-botCyan hover:underline text-[11px]"
+                className="flex items-center gap-1.5 text-botCyan hover:underline text-[11px]"
               >
-                <span>View Protocol on BohrScan</span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-full object-cover shrink-0" />
+                <span>View Protocol on BotScan</span>
                 <ExternalLink className="h-3 w-3" />
               </a>
               <a
-                href={`https://scan.bohr.life/address/${policy.holder}`}
+                href={`https://scan.botchain.ai/address/${policy.holder}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1 text-slate-400 hover:text-white text-[11px]"

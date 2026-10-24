@@ -16,7 +16,7 @@ async function main() {
   let botOracleAddress = process.env.NEXT_PUBLIC_BOTORACLE_CONTRACT_ADDRESS;
   let botLendAddress = process.env.NEXT_PUBLIC_BOTLEND_CONTRACT_ADDRESS;
 
-  // 1. Deploy MockBOT if not provided or on local/testnet
+  // 1. Deploy MockBOT if not provided or on development environment
   if (!botTokenAddress) {
     console.log("Deploying MockBOT Token...");
     const MockBOT = await ethers.getContractFactory("MockBOT");

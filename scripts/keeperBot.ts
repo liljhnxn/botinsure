@@ -92,7 +92,7 @@ async function runKeeperSweep() {
         console.log(`   Transaction submitted: ${tx.hash}`);
         const receipt = await tx.wait();
         console.log(`   ✅ Policy #${i} marked EXPIRED. Unlocked ${ethers.formatEther(policy.coverageAmount)} BOT pool coverage.`);
-        console.log(`   🔗 Explorer: https://scan.bohr.life/tx/${tx.hash}`);
+        console.log(`   🔗 Explorer: https://scan.botchain.ai/tx/${tx.hash}`);
         expiredCount++;
       } catch (err: any) {
         console.error(`   ❌ Failed to expire Policy #${i}:`, err.message);
@@ -117,7 +117,7 @@ async function runKeeperSweep() {
           console.log(`   Transaction submitted: ${tx.hash}`);
           const receipt = await tx.wait();
           console.log(`   ⚡ Policy #${i} successfully TRIGGERED and is now CLAIMABLE by holder!`);
-          console.log(`   🔗 Explorer: https://scan.bohr.life/tx/${tx.hash}`);
+          console.log(`   🔗 Explorer: https://scan.botchain.ai/tx/${tx.hash}`);
           triggeredCount++;
         } catch (err: any) {
           console.error(`   ❌ Failed to activate trigger for Policy #${i}:`, err.message);

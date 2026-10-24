@@ -10,7 +10,7 @@ async function main() {
   console.log(`============================================================\n`);
 
   const [signer] = await ethers.getSigners();
-  const oracleAddress = process.env.NEXT_PUBLIC_BOTORACLE_CONTRACT_ADDRESS || "0x79bEA635f37aCeE4AfFa8056474180921F156cea";
+  const oracleAddress = process.env.NEXT_PUBLIC_BOTORACLE_CONTRACT_ADDRESS || "0xb7Ca90c5d60B86CF08B4BE94c973EcCCa4D2f844";
   const botOracle = await ethers.getContractAt("MockBotOracle", oracleAddress, signer);
 
   // 1. Set Feed #1 Price to $0.65 (65,000,000, 8 decimals) with fresh timestamp
@@ -19,7 +19,7 @@ async function main() {
   const tx = await botOracle.setPrice(1, triggerPrice);
   await tx.wait();
   console.log(`✅ Oracle updated! Feed #1 is now $0.65 (Trigger threshold is <= $0.70)`);
-  console.log(`🔗 Bohr Scan Tx: https://scan.bohr.life/tx/${tx.hash}\n`);
+  console.log(`🔗 BotScan Tx: https://scan.botchain.ai/tx/${tx.hash}\n`);
 
   console.log(`👉 Now run the Keeper Bot to autonomously detect and execute the trigger:`);
   console.log(`   npm run keeper\n`);

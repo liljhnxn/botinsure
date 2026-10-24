@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const address = "0xdc04788364d51f8A836794694a728322634bD4Ac";
+  const address = process.env.NEXT_PUBLIC_BOTINSURE_CONTRACT_ADDRESS || "0xD874Fad6896fA787D1793F6233C8021D0c2451F4";
   const botInsure = await ethers.getContractAt("BotInsure", address);
 
   console.log("\n--- Querying Live BotInsure Contract ---");

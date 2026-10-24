@@ -154,12 +154,14 @@ export default function ClaimDetailPage() {
             Smart contract transferred {formatBOT(claimAmount as bigint | undefined)} BOT to {policy.holder}.
           </p>
           <a
-            href={`https://scan.bohr.life/tx/${txSuccessHash}`}
+            href={`https://scan.botchain.ai/tx/${txSuccessHash}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-xs text-botCyan hover:underline font-mono"
+            className="inline-flex items-center gap-1.5 text-xs text-botCyan hover:underline font-mono"
           >
-            <span>View BohrScan Transaction: {txSuccessHash.slice(0, 20)}...</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
+            <span>View BotScan Transaction: {txSuccessHash.slice(0, 20)}...</span>
             <ExternalLink className="h-3 w-3" />
           </a>
         </div>

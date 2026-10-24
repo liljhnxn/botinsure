@@ -1,6 +1,6 @@
 # BotInsure — Decentralized Parametric Protection Protocol
 
-BotInsure is an on-chain, code-enforced parametric protection protocol built for the **Botchain** ecosystem (Chain ID `968`). It eliminates manual claims adjusters, arbitrary committee disputes, and subjective claim denials by relying strictly on verifiable on-chain oracle feeds and lending positions.
+BotInsure is an on-chain, code-enforced parametric protection protocol built for the **Botchain** ecosystem (Chain ID `677`). It eliminates manual claims adjusters, arbitrary committee disputes, and subjective claim denials by relying strictly on verifiable on-chain oracle feeds and lending positions.
 
 ---
 
@@ -131,7 +131,7 @@ Work 14/
 │   │   ├── components/                 # Navbar, Footer, Web3Provider
 │   │   ├── config/                     # Chains, Contracts, ABIs, Wagmi
 │   │   └── lib/                        # Identity, formatters
-├── hardhat.config.ts                   # Hardhat config with Botchain Testnet
+├── hardhat.config.ts                   # Hardhat config with Botchain Mainnet (677)
 ├── package.json                        # Monorepo scripts
 └── README.md
 ```
@@ -173,15 +173,15 @@ npm run test
 npm run deploy:local
 ```
 
-### Botchain Testnet Deployment
+### Botchain Mainnet Deployment
 Configure your deployer private key in `.env`:
 ```env
-BOTCHAIN_RPC_URL=https://rpc.bohr.life
+BOTCHAIN_RPC_URL=https://rpc.botchain.ai
 DEPLOYER_PRIVATE_KEY=your_private_key_here
 ```
 Then execute:
 ```bash
-npm run deploy:testnet
+npx hardhat run scripts/deployMainnet.ts --network botchainMainnet
 ```
 
 ---
@@ -217,20 +217,20 @@ npm run frontend:build
 
 ### Key Frontend Features:
 - **Real On-Chain Data**: No fake statistics, fake transactions, or mock numbers. All values reflect live contract state.
-- **Built-in Faucet**: 1-click testnet faucet directly in the navigation bar to claim 1,000 BOT test tokens.
-- **Dual Network Support**: Seamlessly connects to Botchain Testnet (Chain ID `968`) or Localhost (Chain ID `31337`).
-- **Interactive Trigger Simulator**: Located in `/admin`, allowing developers and testers to set the BOT price (e.g., $0.65) or BotLend health factor (e.g., 0.85) to trigger policies on-demand.
+- **Mainnet Explorer Links**: Direct integration with BotScan ([https://scan.botchain.ai](https://scan.botchain.ai)) across all contracts, transactions, and pools.
+- **Dual Network Support**: Seamlessly connects to Botchain Mainnet (Chain ID `677`) or Localhost (Chain ID `31337`).
+- **Interactive Trigger Controls**: Located in `/admin`, allowing operators and developers to monitor live oracle feeds and simulate trigger thresholds on-demand.
 
 ---
 
-## 11. Botchain Testnet Configuration
+## 11. Botchain Mainnet Configuration
 
 | Parameter | Value |
 | :--- | :--- |
-| **Network Name** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Block Explorer** | [https://scan.bohr.life](https://scan.bohr.life) |
+| **Network Name** | Botchain Mainnet |
+| **Chain ID** | `677` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
 | **Native Gas Token** | `BOT` |
 
 ---

@@ -16,6 +16,8 @@ import {
   PieChart,
   Users,
   Activity,
+  Globe,
+  Compass,
 } from "lucide-react";
 import { CONTRACT_ADDRESSES, BOTINSURE_ABI } from "@/config/contracts";
 import { formatBOT } from "@/lib/format";
@@ -301,6 +303,57 @@ export default function DashboardPage() {
               Triggered policy unlocks claim window. Smart contract immediately disburses BOT payout directly to user.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* BOT Chain Native Ecosystem Callout */}
+      <div className="rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-surface via-surface/80 to-emerald-500/5 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-cyanGlow/10">
+        <div className="flex items-center gap-4">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-black/60 border border-emerald-500/30 p-2 shadow-cyanGlow">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              className="h-full w-full rounded-xl object-contain"
+            />
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <h3 className="text-xl font-extrabold text-white">Built on BOT Chain Mainnet</h3>
+              <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-bold text-emerald-400 border border-emerald-500/20">
+                Chain ID: 677
+              </span>
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed max-w-xl">
+              BotInsure leverages BOT Chain&apos;s high-throughput architecture, fast block finality, and ultra-low gas fees for sub-second parametric settlements.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500/20 to-botCyan/20 hover:from-emerald-500/30 hover:to-botCyan/30 text-emerald-300 border border-emerald-500/40 font-bold text-xs transition-all shadow-md group"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-full object-cover shrink-0 group-hover:scale-110 transition-transform" />
+            <span>BOT Chain Website</span>
+            <ArrowUpRight className="h-3.5 w-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
+          </a>
+
+          <a
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface border border-surfaceBorder hover:border-emerald-500/50 text-slate-200 hover:text-white font-semibold text-xs transition-all shadow-sm group"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/botchain-logo.png" alt="BOT Chain" className="h-4 w-4 rounded-full object-cover shrink-0 group-hover:scale-110 transition-transform" />
+            <span>BOT Chain Explorer</span>
+            <ArrowUpRight className="h-3.5 w-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
+          </a>
         </div>
       </div>
     </div>

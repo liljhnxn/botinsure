@@ -179,7 +179,7 @@ export default function PoolDetailPage() {
       return;
     }
     if (isInsufficientBot) {
-      setActionError("Deposit amount exceeds your current BOT balance. Claim test tokens via the faucet.");
+      setActionError("Deposit amount exceeds your current BOT balance. Please acquire or wrap BOT tokens.");
       return;
     }
 
@@ -248,7 +248,7 @@ export default function PoolDetailPage() {
     }
   };
 
-  const isWrongNetwork = isConnected && chain?.id !== 968 && chain?.id !== 31337;
+  const isWrongNetwork = isConnected && chain?.id !== 677 && chain?.id !== 31337;
 
   if (poolLoading || !pool) {
     return (
@@ -283,11 +283,13 @@ export default function PoolDetailPage() {
           <p className="text-xs text-slate-400 mt-1 flex items-center gap-1.5 flex-wrap">
             <span>Share Token Contract:</span>
             <a
-              href={`https://scan.bohr.life/address/${pool.shareToken}`}
+              href={`${process.env.NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL || "https://scan.botchain.ai"}/address/${pool.shareToken}`}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-botCyan hover:underline inline-flex items-center gap-1"
+              className="font-mono text-botCyan hover:underline inline-flex items-center gap-1.5"
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
               <span>{pool.shareToken}</span>
               <ExternalLink className="h-3 w-3" />
             </a>
@@ -315,10 +317,10 @@ export default function PoolDetailPage() {
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-amber-200">
           <div className="flex items-center gap-2">
             <AlertCircle className="h-5 w-5 text-amber-400 shrink-0" />
-            <span>You are connected to an unsupported network. Please switch to Botchain Testnet (Chain ID 968).</span>
+            <span>You are connected to an unsupported network. Please switch to Botchain Mainnet (Chain ID 677).</span>
           </div>
           <button
-            onClick={() => switchChain({ chainId: 968 })}
+            onClick={() => switchChain({ chainId: 677 })}
             className="px-3.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 transition-all shrink-0"
           >
             Switch to Botchain
@@ -474,21 +476,12 @@ export default function PoolDetailPage() {
             {isConnected && userBotBalanceVal === 0n && (
               <div className="rounded-xl border border-botCyan/30 bg-botCyan/10 p-3 space-y-2 text-xs">
                 <div className="flex items-center gap-2 text-botCyan font-semibold">
-                  <Droplets className="h-4 w-4 shrink-0" />
-                  <span>Your BOT Balance is 0</span>
+                  <Coins className="h-4 w-4 shrink-0" />
+                  <span>Deposit Liquidity</span>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  Claim 1,000 free testnet BOT tokens to test depositing underwriting liquidity.
+                  Provide underwriting liquidity in BOT (WBOT) to earn streaming premium yields and protocol underwriting fees.
                 </p>
-                <button
-                  type="button"
-                  onClick={handleFaucet}
-                  disabled={isFaucetLoading}
-                  className="w-full py-2 rounded-lg bg-botCyan text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-cyan-300 transition-all shadow-sm"
-                >
-                  {isFaucetLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Droplets className="h-3.5 w-3.5" />}
-                  <span>{isFaucetLoading ? "Minting Test BOT..." : "Claim 1,000 Test BOT"}</span>
-                </button>
               </div>
             )}
 
@@ -693,12 +686,14 @@ export default function PoolDetailPage() {
                   <span>Transaction Confirmed!</span>
                 </div>
                 <a
-                  href={`https://scan.bohr.life/tx/${actionSuccess}`}
+                  href={`https://scan.botchain.ai/tx/${actionSuccess}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-mono text-[11px] text-botCyan hover:underline flex items-center gap-1"
+                  className="font-mono text-[11px] text-botCyan hover:underline flex items-center gap-1.5"
                 >
-                  <span>View on Bohr Scan &rarr;</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/botchain-logo.png" alt="BOT Chain" className="h-3 w-3 rounded-full object-cover shrink-0" />
+                  <span>View on BotScan &rarr;</span>
                 </a>
               </div>
             )}

@@ -1,7 +1,7 @@
 # BotInsure Protocol — Whitepaper & Pitch Deck
 **"Deterministic, Zero-Dispute Parametric Protection for the Botchain Ecosystem"**
 
-*On-Chain Code-Enforced Parametric Protection Protocol Built on Botchain Testnet (Chain ID: 968)*
+*On-Chain Code-Enforced Parametric Protection Protocol Built on Botchain Mainnet (Chain ID: 677)*
 
 ---
 
@@ -9,7 +9,7 @@
 
 Decentralized Finance (DeFi) has unlocked unprecedented capital velocity and composability, yet it remains exposed to severe systemic vulnerabilities: sudden token crashes, rapid liquidation spirals, and oracle latency. Traditional mutuals and discretionary Web3 insurance models have failed to provide reliable safety nets because they depend on subjective claims assessment, centralized claims adjusters, or sluggish governance voting that routinely denies valid claims or locks capital in endless dispute arbitration.
 
-**BotInsure** introduces an on-chain, code-enforced **parametric protection protocol** purpose-built for the **Botchain ecosystem (Chain ID 968)**. BotInsure replaces human discretion with mathematical certainty:
+**BotInsure** introduces an on-chain, code-enforced **parametric protection protocol** purpose-built for the **Botchain ecosystem (Chain ID 677)**. BotInsure replaces human discretion with mathematical certainty:
 - **Binary & Measurable Triggers**: Protection policies are tied strictly to verifiable, deterministic on-chain data sources—including `IBotOracle` price feeds and `IBotLend` borrower health factor positions.
 - **Instantaneous Settlements**: When a trigger threshold is breached (e.g., BOT token drops to $\le \$0.70$ or a loan health factor falls $< 1.00$), the policy automatically enters a claimable state without governance delays or adjuster approvals.
 - **Yield-Bearing Liquidity Underwriting**: Capital providers deposit BOT tokens into dedicated risk pools to back coverage, earning 95% of policy premiums via yield-accruing ERC-20 share tokens (`BotInsurePoolToken`) with automated capital solvency safeguards.
@@ -126,24 +126,26 @@ BotInsure adheres to institutional smart contract safety standards:
 
 ---
 
-## 6. Live Testnet Deployment & Verification
+## 6. Live Mainnet Deployment & Verification
 
 | Network Parameter | Deployed Configuration |
 | :--- | :--- |
-| **Network** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Block Explorer** | [https://scan.bohr.life](https://scan.bohr.life) |
-| **BotInsure Contract** | `0xdc04788364d51f8A836794694a728322634bD4Ac` |
-| **BOT Test Token** | `0xa745cA6705B718156207a29cb102d7EA1Cd27720` |
-| **BotOracle Feed** | `0x79bEA635f37aCeE4AfFa8056474180921F156cea` |
-| **BotLend Contract** | `0x11148C246EBcfCE2E189d24044178072F3C8f2b6` |
+| **Network** | Botchain Mainnet |
+| **Chain ID** | `677` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
+| **BotInsure Contract** | `0xD874Fad6896fA787D1793F6233C8021D0c2451F4` |
+| **BOT Token (WBOT)** | `0xD5452816194a3784dBa983426cCe7c122F4abd30` |
+| **BotOracle Feed** | `0xb7Ca90c5d60B86CF08B4BE94c973EcCCa4D2f844` |
+| **BotLend Contract** | `0x7D097D3C1C56Fb555F76f7C57E84543CAeB6674a` |
+| **Pool 1 Share Token** | `0x7ddaF74814a9c5F14f5244841d58232DD819EFcF` |
+| **Pool 2 Share Token** | `0xf8AFe9E8E57d57F20A49BfDA9D28042Ab886d887` |
 
 ---
 
 ## 7. Roadmap & Future Expansion
 
-- **Phase 1 (Completed)**: Core contracts, 35 comprehensive automated tests, Botchain Testnet deployment, autonomous keeper daemon, interactive dApp with live faucet and trigger simulator.
+- **Phase 1 (Completed)**: Core contracts, comprehensive automated tests, Botchain Mainnet deployment, autonomous keeper daemon, interactive dApp with live on-chain integration.
 - **Phase 2 (Q2 2026)**: Multi-asset collateral pools (BOT, USDC, USDT), secondary policy trading (ERC-721 tokenized coverage), integration with native BotNS naming.
 - **Phase 3 (Q3 2026)**: Cross-chain parametric coverage bridging EVM ecosystems and decentralized keeper oracle consensus networks.
 

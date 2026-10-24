@@ -3,16 +3,16 @@ import deployedData from "./deployedContracts.json";
 export const CONTRACT_ADDRESSES = {
   botInsure: (process.env.NEXT_PUBLIC_BOTINSURE_CONTRACT_ADDRESS ||
     deployedData?.contracts?.BotInsure ||
-    "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9") as `0x${string}`,
+    "0xD874Fad6896fA787D1793F6233C8021D0c2451F4") as `0x${string}`,
   botToken: (process.env.NEXT_PUBLIC_BOT_TOKEN_ADDRESS ||
     deployedData?.contracts?.BotToken ||
-    "0x5FbDB2315678afecb367f032d93F642f64180aa3") as `0x${string}`,
+    "0xD5452816194a3784dBa983426cCe7c122F4abd30") as `0x${string}`,
   botOracle: (process.env.NEXT_PUBLIC_BOTORACLE_CONTRACT_ADDRESS ||
     deployedData?.contracts?.BotOracle ||
-    "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512") as `0x${string}`,
+    "0xb7Ca90c5d60B86CF08B4BE94c973EcCCa4D2f844") as `0x${string}`,
   botLend: (process.env.NEXT_PUBLIC_BOTLEND_CONTRACT_ADDRESS ||
     deployedData?.contracts?.BotLend ||
-    "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9") as `0x${string}`,
+    "0x7D097D3C1C56Fb555F76f7C57E84543CAeB6674a") as `0x${string}`,
 };
 
 export const BOTINSURE_ABI = [

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 /**
  * @title MockBOT
- * @notice Mock BOT token for local testing and testnet simulation.
+ * @notice Mock BOT token for local unit testing and development.
  */
 contract MockBOT is ERC20 {
     uint8 private immutable _decimals;
@@ -25,7 +25,7 @@ contract MockBOT is ERC20 {
     }
 
     /**
-     * @notice Free faucet function for testing on testnet / localhost.
+     * @notice Free faucet function for local testing / development.
      * Mints 1,000 BOT to the caller.
      */
     function faucet() external {

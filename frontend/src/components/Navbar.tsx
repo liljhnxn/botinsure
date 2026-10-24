@@ -108,31 +108,48 @@ export function Navbar() {
 
         {/* Right Action Bar */}
         <div className="hidden sm:flex items-center gap-3">
+          {/* BOT Chain Website Link */}
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            title="BOT Chain Official Website"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface border border-surfaceBorder hover:border-emerald-500/40 text-xs text-slate-300 hover:text-white transition-all shadow-sm group"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              className="h-3.5 w-3.5 rounded-full object-cover shrink-0 group-hover:scale-110 transition-transform"
+            />
+            <span>Botchain</span>
+            <ExternalLink className="h-3 w-3 text-emerald-400 opacity-70 group-hover:opacity-100" />
+          </a>
+
+          {/* Mainnet Explorer Link */}
+          <a
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            title="Explore on BotScan"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface border border-surfaceBorder hover:border-botCyan/40 text-xs text-slate-300 hover:text-white transition-all shadow-sm group"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              className="h-3.5 w-3.5 rounded-full object-cover shrink-0 group-hover:scale-110 transition-transform"
+            />
+            <span>Explorer</span>
+            <ExternalLink className="h-3 w-3 text-botCyan opacity-70 group-hover:opacity-100" />
+          </a>
+
           {/* Network Indicator */}
           {isConnected && (
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface border border-surfaceBorder text-xs text-slate-300">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{chain?.name || "Botchain (968)"}</span>
+              <span>{chain?.name || "Botchain Mainnet (677)"}</span>
             </div>
-          )}
-
-          {/* Faucet Button */}
-          {isConnected && (
-            <button
-              onClick={handleFaucet}
-              disabled={faucetLoading}
-              title="Claim 1,000 BOT test tokens"
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-botCyan/10 hover:bg-botCyan/20 text-botCyan border border-botCyan/30 transition-all shadow-sm"
-            >
-              {faucetLoading ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : faucetSuccess ? (
-                <CheckCircle className="h-3.5 w-3.5 text-emerald-400" />
-              ) : (
-                <Droplets className="h-3.5 w-3.5" />
-              )}
-              <span>{faucetLoading ? "Minting..." : faucetSuccess ? "+1,000 BOT!" : "Faucet (1k BOT)"}</span>
-            </button>
           )}
 
           {/* Wallet Balance & Connect */}
@@ -200,13 +217,30 @@ export function Navbar() {
                   <span>Balance:</span>
                   <span className="font-semibold text-botCyan">{formatBOT(botBalance)} BOT</span>
                 </div>
-                <button
-                  onClick={handleFaucet}
-                  disabled={faucetLoading}
-                  className="w-full py-2 text-xs font-semibold rounded-lg bg-botCyan/15 text-botCyan border border-botCyan/30"
-                >
-                  {faucetLoading ? "Minting..." : "Claim 1,000 BOT Faucet"}
-                </button>
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <a
+                    href="https://botchain.ai"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="py-2 px-2 text-xs font-semibold rounded-lg bg-surface border border-surfaceBorder text-slate-200 flex items-center justify-center gap-1.5"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
+                    <span>Website</span>
+                    <ExternalLink className="h-3 w-3 text-emerald-400" />
+                  </a>
+                  <a
+                    href="https://scan.botchain.ai"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="py-2 px-2 text-xs font-semibold rounded-lg bg-surface border border-surfaceBorder text-slate-200 flex items-center justify-center gap-1.5"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
+                    <span>Explorer</span>
+                    <ExternalLink className="h-3 w-3 text-botCyan" />
+                  </a>
+                </div>
                 <button
                   onClick={() => disconnect()}
                   className="w-full py-2 text-xs font-semibold rounded-lg bg-surfaceHover text-slate-300"
@@ -215,16 +249,42 @@ export function Navbar() {
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => {
-                  const connector = connectors[0];
-                  if (connector) connect({ connector });
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-botCyan to-botBlue text-white"
-              >
-                Connect Wallet
-              </button>
+              <>
+                <button
+                  onClick={() => {
+                    const connector = connectors[0];
+                    if (connector) connect({ connector });
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-botCyan to-botBlue text-white"
+                >
+                  Connect Wallet
+                </button>
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <a
+                    href="https://botchain.ai"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="py-2 px-2 text-xs font-semibold rounded-lg bg-surface border border-surfaceBorder text-slate-200 flex items-center justify-center gap-1.5"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
+                    <span>Website</span>
+                    <ExternalLink className="h-3 w-3 text-emerald-400" />
+                  </a>
+                  <a
+                    href="https://scan.botchain.ai"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="py-2 px-2 text-xs font-semibold rounded-lg bg-surface border border-surfaceBorder text-slate-200 flex items-center justify-center gap-1.5"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/botchain-logo.png" alt="BOT Chain" className="h-3.5 w-3.5 rounded-full object-cover shrink-0" />
+                    <span>Explorer</span>
+                    <ExternalLink className="h-3 w-3 text-botCyan" />
+                  </a>
+                </div>
+              </>
             )}
           </div>
         </div>

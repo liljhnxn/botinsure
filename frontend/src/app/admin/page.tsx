@@ -274,16 +274,16 @@ export default function AdminPage() {
         </div>
       </div>
 
-      {/* Simulator Section for Testnet & Localhost */}
+      {/* Simulator Section for Parametric Controls */}
       <div className="cyber-card rounded-2xl p-6 space-y-6">
         <div className="flex flex-col gap-1 border-b border-surfaceBorder pb-4">
           <div className="inline-flex items-center gap-1.5 text-botCyan text-xs font-semibold">
             <Zap className="h-4 w-4" />
-            <span>Interactive MVP Testnet Simulator</span>
+            <span>Parametric Trigger Control & Testing</span>
           </div>
           <h2 className="text-xl font-bold text-white">Trigger Simulation Control</h2>
           <p className="text-xs text-slate-400">
-            Easily update the MockBotOracle price or MockBotLend health factor to trigger policies and verify automated claims live in the UI!
+            Monitor and test live oracle price feeds and lending health factor parameters to verify automated parametric claims.
           </p>
         </div>
 
